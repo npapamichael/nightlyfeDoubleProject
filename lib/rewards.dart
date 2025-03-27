@@ -1,0 +1,156 @@
+import 'package:flutter/material.dart';
+import 'package:nightlyfe/services/point_handler.dart';
+import 'package:nightlyfe/assets/widgets/drinkWidget.dart';
+import 'assets/functionals/drink_details.dart';
+
+class Rewards extends StatefulWidget {
+  const Rewards({super.key});
+
+  @override
+  State<Rewards> createState() => _RewardsState();
+}
+
+class _RewardsState extends State<Rewards> {
+  int currentPoints = PointsHandler.getPoints(); // GET CURRENT POINTS
+
+  // REFRESH REDEEMABLE DRINKS BASED ON POINTS
+  List<Map<String, dynamic>> _getRedeemableDrinks() {
+    return drinks.where((drink) {
+      return drink['points'] <= currentPoints; // SHOW REDEEMABLE
+    }).toList();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    PointsHandler.onPointsChanged = _onPointsChanged;
+  }
+
+  @override
+  void dispose() {
+    PointsHandler.onPointsChanged = null;
+    super.dispose();
+  }
+
+  // POINTS CHANGED
+  void _onPointsChanged() {
+    setState(() {
+      currentPoints = PointsHandler.getPoints(); //POINTS REFRESH
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //SHOW REDEEMABLE DRINKS
+    List<Map<String, dynamic>> redeemableDrinks = _getRedeemableDrinks();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Rewards',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            fontFamily: 'BebasNeue',
+          ),
+        ),
+        backgroundColor: const Color(0xFF4a0404),
+        titleTextStyle: const TextStyle(color: Colors.white),
+      ),
+      body: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(color: Color(0xFF292929)),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // DISPLAY POINTS
+            Text(
+              'You have accumulated: $currentPoints points',
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontFamily: 'PressStart2P',
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Divider(
+              thickness: 1.5,
+              color: Colors.deepOrange,
+            ),
+            const SizedBox(height: 20),
+
+            // DRINK SECTION
+            const Text(
+              'Redeemable Drinks',
+              style: TextStyle(
+                fontSize: 25,
+                color: Colors.white,
+                fontFamily: 'PressStart2P',
+              ),
+            ),
+            const SizedBox(height: 10),
+
+            redeemableDrinks.isEmpty
+                ? const Text(
+              'No drinks available for redemption.',
+              style: TextStyle(
+                color: Colors.deepPurple,
+                fontFamily: 'PressStart2P',
+                fontSize: 20,
+              ),
+            )
+                : Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(20),
+                child: _buildRewardsList(redeemableDrinks),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // DISPLAY DRINKS IN A LIST
+  Widget _buildRewardsList(List<Map<String, dynamic>> redeemableDrinks) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: redeemableDrinks.length,
+      itemBuilder: (context, index) {
+        var drink = redeemableDrinks[index];
+        return GestureDetector(
+          onTap: () {
+          },
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.black54,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 5,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: DrinkWidget(
+                base: drink['base'],
+                image: drink['image'],
+                name: drink['name'],
+                traits: List<String>.from(drink['traits']),
+                description: drink['description'],
+                recipe: drink['recipe'],
+                points: drink['points'],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
