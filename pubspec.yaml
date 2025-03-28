@@ -42,9 +42,6 @@ dependencies:
   firebase_auth: ^5.4.1
   google_sign_in: ^6.2.2
   shared_preferences: ^2.0.13
-  firebase_messaging: ^15.2.4
-  locality_social_cloud_friendlist: ^1.1.0
-  flutter_local_notifications: ^18.0.1
   flutter_stripe: ^11.4.0
   http:
 

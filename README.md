@@ -1,7 +1,8 @@
-# Project Title
-Papamichael Nikolas
+# NightLyfe
 
-npapamichael@uclan.ac.uk
+## Papamichael Nikolas
+
+sstyianou2@uclan.ac.uk
 
 ## Table of Contents
 - [About The Project](#about-the-project)
@@ -10,65 +11,85 @@ npapamichael@uclan.ac.uk
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
 - [Usage](#usage)
-- [Contact](#contact)
-- [Acknowledgments](#acknowledgments)
 
 ## About The Project
-Write one paragraph to describe your project. What kind of software is it? (mobile app, web app, software tool, etc.) What features does it provide? Who are the intended users?
+NightLyfe provides an informative platform and acts as a loyalty program for that frequent a certain establishment.
+
+- Stay up-to-date at the palm of the hand with all upcoming events. 
+- Buy tiers that provide benefits as a membership status (for proof of concept, for now it provides points to utilize point system).
+- Point Accumulation System that allows users to redeem points for drinks.
+- Better the workflow of bars/clubs by providing a simple interface to inform users of event or services available.
+
+NightLyfe is a mobile application.
+
+The mobile application not only enhances customer engagement by providing a seamless loyalty experience but also encourages users to maximize their membership benefits.
+
+The proposed nightlife loyalty application will leverage features such as a global points system, dynamic pricing for drink purchases, 
+and a streamlined user experience, ensuring an engaging and rewarding experience for customers while fostering brand loyalty.
 
 [Back to top](#table-of-contents)
 
 ## Development Tools
-This section should list any major frameworks/libraries used to create your project. Leave any add-ons/plugins for the acknowledgments section. Here are a few examples:
+This section lists major frameworks/libraries used to create the project.
 
-- Java 11 SDK
-- Apache Tomcat
-- MySQL 3.11
-- Redis
-- GSON
+- Flutter (Dart)
+- Supabase (PostgreSQL backend + authentication)
+- [fluttermoji](https://pub.dev/packages/fluttermoji)
+- [get](https://pub.dev/packages/get)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
+- [curved_navigation_bar](https://pub.dev/packages/curved_navigation_bar)
+- [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter)
+- [url_launcher](https://pub.dev/packages/url_launcher)
+- [pdf](https://pub.dev/packages/pdf)
+- [path_provider](https://pub.dev/packages/path_provider)
+- [open_file](https://pub.dev/packages/open_file)
+- [provider](https://pub.dev/packages/provider)
+- [avatar_glow](https://pub.dev/packages/avatar_glow)
 
 [Back to top](#table-of-contents)
 
 ## Getting Started
-This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running, follow these simple example steps. Include instructions on how to install software needed to run your project and commands to be executed.
+Follow these steps to set up the project locally on your machine.
 
 ### Prerequisites
-This is an example of how to list things you need to use the software and how to install them.
+- Flutter SDK (latest stable version)
+- Dart
+- Android Studio or Visual Studio Code
+- A Supabase project with credentials
 
-```sh
-npm install npm@latest -g
-```
+Install Flutter: [https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/get-started/install)
 
 ### Installation
-Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services.
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo:
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/npapamichael/nightlyfeDoubleProject.git
    ```
-3. Install NPM packages
+2. Navigate to the project directory:
    ```sh
-   npm install
+   cd nightlyfe
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote URL to avoid accidental pushes to base project
+3. Install Flutter dependencies:
    ```sh
-   git remote set-url origin github_username/repo_name
-   git remote -v # confirm the changes
+   flutter pub get
+   ```
+4. Run the app on your device or emulator:
+   ```sh
+   flutter run
    ```
 
 [Back to top](#table-of-contents)
 
 ## Usage
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples, and demos work well in this space. You may also link to more resources.
+Users can:
 
-For more examples, please refer to the Documentation.
+- Register and log in securely via Firebase Authentication
+- Accumulate and track reward points based on purchases
+- Redeem points for discounts or free drinks
+- View their membership tier and benefits in real-time
 
 [Back to top](#table-of-contents)
+
+
 
 ## Contact
 Papamichael Nikolas - npapamichael@uclan.ac.uk - [GitHub](https://github.com/npapamichael)
@@ -80,6 +101,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/np
 
 ## Acknowledgments
 Dr. Andriani Piki (Supervisor)
+Dr. Kasenidis Nicos (Co-supervisor)
 
 [Back to top](#table-of-contents)
 
