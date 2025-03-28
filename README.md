@@ -1,7 +1,7 @@
 # Project Title
-Your Name
+Papamichael Nikolas
 
-email@example.com
+npapamichael@uclan.ac.uk
 
 ## Table of Contents
 - [About The Project](#about-the-project)
@@ -71,14 +71,15 @@ For more examples, please refer to the Documentation.
 [Back to top](#table-of-contents)
 
 ## Contact
-Your Name - email@example.com - [GitHub](https://github.com/your_username)
+Papamichael Nikolas - npapamichael@uclan.ac.uk - [GitHub](https://github.com/npapamichael)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/your_username/repo_name](https://github.com/npapamichael/nightlyfeDoubleProject
+)
 
 [Back to top](#table-of-contents)
 
 ## Acknowledgments
-Use this space to list resources you found helpful or people that have helped you and that you would like to give credit to.
+Dr. Andriani Piki (Supervisor)
 
 [Back to top](#table-of-contents)
 
