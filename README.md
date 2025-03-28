@@ -2,7 +2,7 @@
 
 ## Papamichael Nikolas
 
-sstyianou2@uclan.ac.uk
+npapamichael@uclan.ac.uk
 
 ## Table of Contents
 - [About The Project](#about-the-project)
@@ -33,18 +33,16 @@ and a streamlined user experience, ensuring an engaging and rewarding experience
 This section lists major frameworks/libraries used to create the project.
 
 - Flutter (Dart)
-- Supabase (PostgreSQL backend + authentication)
+- Firebase (Authentication)
 - [fluttermoji](https://pub.dev/packages/fluttermoji)
-- [get](https://pub.dev/packages/get)
+- [http](https://pub.dev/packages/http)
 - [shared_preferences](https://pub.dev/packages/shared_preferences)
-- [curved_navigation_bar](https://pub.dev/packages/curved_navigation_bar)
-- [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter)
-- [url_launcher](https://pub.dev/packages/url_launcher)
-- [pdf](https://pub.dev/packages/pdf)
-- [path_provider](https://pub.dev/packages/path_provider)
-- [open_file](https://pub.dev/packages/open_file)
-- [provider](https://pub.dev/packages/provider)
-- [avatar_glow](https://pub.dev/packages/avatar_glow)
+- [favorite_button](https://pub.dev/packages/favorite_button)
+- [google_sign_in](https://pub.dev/packages/google_sign_in)
+- [firebase_core](https://pub.dev/packages/firebase_core)
+- [firebase_auth](https://pub.dev/packages/firebase_auth)
+- [flutter_stripe](https://pub.dev/packages/flutter_stripe)
+
 
 [Back to top](#table-of-contents)
 
@@ -55,7 +53,7 @@ Follow these steps to set up the project locally on your machine.
 - Flutter SDK (latest stable version)
 - Dart
 - Android Studio or Visual Studio Code
-- A Supabase project with credentials
+- A Firebase Project initialized
 
 Install Flutter: [https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/get-started/install)
 
@@ -94,7 +92,7 @@ Users can:
 ## Contact
 Papamichael Nikolas - npapamichael@uclan.ac.uk - [GitHub](https://github.com/npapamichael)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/npapamichael/nightlyfeDoubleProject
+Project Link: [https://github.com/npapamichael/nightlyfeDoubleProject](https://github.com/npapamichael/nightlyfeDoubleProject
 )
 
 [Back to top](#table-of-contents)
