@@ -40,7 +40,7 @@ class _MenuState extends State<Menu> {
           ),
         ),
         actions: const [
-          PointsDisplay(), //DISPLAY POINTS IN MENU
+          PointsDisplay(), // DISPLAY POINTS IN MENU
         ],
       ),
       body: selectedBase == null ? _buildCategories() : _buildDrinks(),
@@ -63,7 +63,7 @@ class _MenuState extends State<Menu> {
               margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black,
                     blurRadius: 5,
@@ -105,88 +105,104 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  // DRINKS WIDGET
+  // DRINKS WIDGET WITH STICKY BUTTON
   Widget _buildDrinks() {
     List<Map<String, dynamic>> filteredDrinks =
     drinks.where((drink) => drink['base'] == selectedBase).toList();
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //BACK TO MENU BUTTON
-          Row(
-            children: [
-              FloatingActionButton(
-                mini: true,
-                backgroundColor: Colors.white,
-                onPressed: () {
-                  setState(() {
-                    selectedBase = null;
-                  });
-                },
-                child: const Icon(Icons.arrow_back, color: Colors.black),
-              ),
-              const SizedBox(width: 10),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedBase = null;
-                  });
-                },
-                child: const Text(
-                  'Back to Menu',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'BebasNeue',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
+    return Stack(
+      children: [
+        Column(
+          children: [
+            // SCROLLABLE DRINK LIST
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(30, 30, 30, 100), // Space for button
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // BACK TO MENU BUTTON
+                    Row(
+                      children: [
+                        FloatingActionButton(
+                          mini: true,
+                          backgroundColor: Colors.white,
+                          onPressed: () {
+                            setState(() {
+                              selectedBase = null;
+                            });
+                          },
+                          child: const Icon(Icons.arrow_back, color: Colors.black),
+                        ),
+                        const SizedBox(width: 10),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedBase = null;
+                            });
+                          },
+                          child: const Text(
+                            'Back to Menu',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'BebasNeue',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
 
-          //DRINK LIST
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: filteredDrinks.length,
-            itemBuilder: (context, index) {
-              var drink = filteredDrinks[index];
-              return Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.black54, // Background color
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      blurRadius: 5,
-                      spreadRadius: 1,
+                    // DRINK LIST
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: filteredDrinks.length,
+                      itemBuilder: (context, index) {
+                        var drink = filteredDrinks[index];
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.black54, // Background color
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                blurRadius: 5,
+                                spreadRadius: 1,
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: DrinkWidget(
+                              base: drink['base'],
+                              image: drink['image'],
+                              name: drink['name'],
+                              traits: List<String>.from(drink['traits']),
+                              description: drink['description'],
+                              recipe: drink['recipe'],
+                              points: drink['points'],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: DrinkWidget(
-                    base: drink['base'],
-                    image: drink['image'],
-                    name: drink['name'],
-                    traits: List<String>.from(drink['traits']),
-                    description: drink['description'],
-                    recipe: drink['recipe'],
-                    points: drink['points'],
-                  ),
-                ),
-              );
-            },
-          ),
+              ),
+            ),
+          ],
+        ),
 
-          const SizedBox(height: 30),
-          Align(
+        // FLOATING SOUSAMI BUTTON
+        Positioned(
+          bottom: 20,
+          left: 0,
+          right: 0,
+          child: Align(
             alignment: Alignment.center,
             child: InkWell(
               onTap: () {
@@ -205,8 +221,9 @@ class _MenuState extends State<Menu> {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
+
 }
